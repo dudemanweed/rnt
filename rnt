@@ -48,6 +48,12 @@ my %command_table = (
 my $command = $ARGV[0];
 my $sv      = $ARGV[1];
 
+if (scalar(@ARGV) != 2) {
+  say "usage: rnt command service";
+  say "commands: @options";
+  exit;
+}
+
 unless(exists $command_table{$command}) {
   say "Unrecognized command: $command";
   exit;
@@ -58,11 +64,6 @@ if($UID != 0) {
   exit;
 }
 
-if (scalar(@ARGV) != 2) {
-  say "usage: rnt command service";
-  say "commands: disable, enable, start, stop, status";
-  exit;
-}
 
 unless (stat("/etc/sv/$sv")) {
   say "Unrecognized service: $sv";
