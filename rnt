@@ -31,12 +31,18 @@ sub check_service($sv) {
   return exec("/bin/sv", "status", $sv);
 }
 
+sub restart_service($sv) {
+  system ("sv down $sv");
+  system ("sv up $sv");
+}
+
 my %command_table = (
 				 disable => \&disable_service,
 				 enable  => \&enable_service,
 				 start   => \&start_service,
 				 stop    => \&stop_service,
-				 status  => \&check_service
+				 status  => \&check_service,
+				 restart => \&restart_service
 				);
 
 my $command = $ARGV[0];
