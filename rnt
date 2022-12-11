@@ -47,6 +47,12 @@ my %command_table = (
 
 my $command = $ARGV[0];
 my $sv      = $ARGV[1];
+
+unless(exists $command_table{$command}) {
+  say "Unrecognized command: $command";
+  exit;
+}
+
 if($UID != 0) {
   say "rerun as root";
   exit;
