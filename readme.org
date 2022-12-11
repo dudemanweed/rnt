@@ -1,0 +1,13 @@
+* rnt - a runit wrapper
+the runit command line interface sucks so i fixed it.
+
+** usage
+some example usages of =rnt=:
+
+#+begin_src bash
+  # rnt enable lightdm
+  # rnt start dbus
+  # rnt stop NetworkManager
+  # rnt disable NetworkManager
+  # rnt status lightdm
+#+end_src
